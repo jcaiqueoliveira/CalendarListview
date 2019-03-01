@@ -31,7 +31,7 @@ import android.widget.AbsListView;
 import java.util.Calendar;
 import java.util.HashMap;
 
-public class SimpleMonthAdapter extends RecyclerView.Adapter<SimpleMonthAdapter.ViewHolder> implements SimpleMonthView.OnDayClickListener {
+public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHolder> implements SimpleMonthView.OnDayClickListener {
     private static final int MONTHS_IN_YEAR = 12;
     private final TypedArray typedArray;
     private final Context mContext;
@@ -42,7 +42,7 @@ public class SimpleMonthAdapter extends RecyclerView.Adapter<SimpleMonthAdapter.
     private final Integer firstMonth;
     private final Integer lastMonth;
 
-    SimpleMonthAdapter(Context context, DatePickerController datePickerController, TypedArray typedArray) {
+    CalendarAdapter(Context context, DatePickerController datePickerController, TypedArray typedArray) {
         this.typedArray = typedArray;
         calendar = Calendar.getInstance();
         firstMonth = typedArray.getInt(R.styleable.DayPickerView_firstMonth, calendar.get(Calendar.MONTH));
@@ -90,12 +90,12 @@ public class SimpleMonthAdapter extends RecyclerView.Adapter<SimpleMonthAdapter.
 
         v.reuse();
 
-        drawingParams.put(SimpleMonthView.VIEW_PARAMS_SELECTED_BEGIN_YEAR, selectedFirstYear);
-        drawingParams.put(SimpleMonthView.VIEW_PARAMS_SELECTED_BEGIN_MONTH, selectedFirstMonth);
-        drawingParams.put(SimpleMonthView.VIEW_PARAMS_SELECTED_BEGIN_DAY, selectedFirstDay);
-        drawingParams.put(SimpleMonthView.VIEW_PARAMS_YEAR, year);
-        drawingParams.put(SimpleMonthView.VIEW_PARAMS_MONTH, month);
-        drawingParams.put(SimpleMonthView.VIEW_PARAMS_WEEK_START, calendar.getFirstDayOfWeek());
+        drawingParams.put(SimpleMonthView.Companion.getVIEW_PARAMS_SELECTED_BEGIN_YEAR(), selectedFirstYear);
+        drawingParams.put(SimpleMonthView.Companion.getVIEW_PARAMS_SELECTED_BEGIN_MONTH(), selectedFirstMonth);
+        drawingParams.put(SimpleMonthView.Companion.getVIEW_PARAMS_SELECTED_BEGIN_DAY(), selectedFirstDay);
+        drawingParams.put(SimpleMonthView.Companion.getVIEW_PARAMS_YEAR(), year);
+        drawingParams.put(SimpleMonthView.Companion.getVIEW_PARAMS_MONTH(), month);
+        drawingParams.put(SimpleMonthView.Companion.getVIEW_PARAMS_WEEK_START(), calendar.getFirstDayOfWeek());
         v.setMonthParams(drawingParams);
         v.invalidate();
     }
