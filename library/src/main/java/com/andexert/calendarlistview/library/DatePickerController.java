@@ -24,10 +24,8 @@
 package com.andexert.calendarlistview.library;
 
 public interface DatePickerController {
-	public abstract int getMaxYear();
+	int getMaxYear();
 
-	public abstract void onDayOfMonthSelected(int year, int month, int day);
-
-    public abstract void onDateRangeSelected(final SimpleMonthAdapter.SelectedDays<SimpleMonthAdapter.CalendarDay> selectedDays);
+	void onDayOfMonthSelected(int year, int month, int day);
 
 }
